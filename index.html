@@ -15,13 +15,17 @@
         </form>
       </header>
 
-      <div class="results"></div>
+      <div id ="results" class="results">
+
+
+
+      </div>
     </div>
     <script>
       // const q = 'cats';
       // const apikey = 'yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt'
       const path =
-        'https://api.giphy.com/v1/gifs/search?api_key=yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt&q=cats';
+        'https://api.giphy.com/v1/gifs/search?api_key=yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt&q=cat';
 
       /*     const p = fetch(path) //Promise
     const p2 = p.then(function(res) {
@@ -35,9 +39,23 @@
           return res.json(); // how do I want to handle response= Return the Promise 
         }).then(function (json) {
           console.log(json.data[0].images.fixed_width.url)
+          const resultEl = document.getElementById('results')
+          let resultsHTML = ''
           json.data.forEach(function(obj) {
             console.log(obj.images.fixed_width.url)
-            })// Data is actual 
+            const url = obj.images.fixed_width.url
+            const width = obj.images.fixed_width.width
+            const height = obj.images.fixed_width.height
+            const title =obj.title
+            
+            resultsHTML  += `<img 
+              src="${url}" 
+              width="${width}" 
+              height="${height}"
+              alt="${title}"
+              >`
+            })
+            resultEl.innerHTML = resultsHTML// Data is actual 
         }).catch(function(err) { //Catch Block
             console.log(err.message)
         })
