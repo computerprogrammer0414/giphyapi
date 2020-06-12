@@ -19,6 +19,28 @@
     <div class="results"></div>
 
   </div>
+  <script>
+    const q = 'cats'
+    // const apikey = 'yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt'
+    const path ='https://api.giphy.com/v1/gifs/search?api_key=yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt&q=${q}'
+    
+    
+
+/*     const p = fetch(path) //Promise
+    const p2 = p.then(function(res) {
+        return res.json() //Another Promise
+    })
+    p2.then(function(json){
+        console.log(json)
+    }) */
+    
+    const p2 = fetch(path).then(function(res) {
+        return res.json()
+    }).then(function(json){
+        console.log(json)
+    })
+
+  </script>
   <script src="js/script.js"></script>
   </body>
 
