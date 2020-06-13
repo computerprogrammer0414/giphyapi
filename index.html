@@ -1,31 +1,41 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Giphy API Searcher</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css"
-  </head>
-  <body>
-    <h1>Heading</h1>
-    <div class="container">
-      <header>
-        <form>
-          <input type="text" placeholder="search" />
-          <button type="submit">Search</button>
-        </form>
-      </header>
+<!DOCTYPE html>
+<html lang="en-US">
 
-      <div id ="results" class="results">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giphy API Searcher</title>
+  <link rel="stylesheet" type="text/css" href="styles/style.css" </head> <body>
+  <h1>Heading</h1>
+  <div class="container">
+    <header>
+      <form id="search-form">
+        <input id="search-input" type="text" placeholder="search" />
+        <button type="submit">Search</button>
+      </form>
+    </header>
+
+    <div id="results" class="results">
 
 
 
-      </div>
     </div>
-    <script>
-      // const q = 'cats';
-      // const apikey = 'yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt'
+  </div>
+  <script>
+    const searchForm = document.getElementById('search-form')
+    const searchInput = document.getElementById('search-input')
+    const resultEl = document.getElementById('results')
+
+    searchForm.addEventListener('submit', function (e) {
+      e.preventDefault()
+      const q = searchInput.value
+      search(q)
+    })
+
+    function search(q) {
+      const apikey = 'yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt'
       const path =
-        'https://api.giphy.com/v1/gifs/search?api_key=yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt&q=cat';
+        `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}`;
 
       /*     const p = fetch(path) //Promise
     const p2 = p.then(function(res) {
@@ -36,32 +46,36 @@
     }) */
 
       fetch(path).then(function (res) {
-          return res.json(); // how do I want to handle response= Return the Promise 
-        }).then(function (json) {
-          console.log(json.data[0].images.fixed_width.url)
-          const resultEl = document.getElementById('results')
-          let resultsHTML = ''
-          json.data.forEach(function(obj) {
-            console.log(obj.images.fixed_width.url)
-            const url = obj.images.fixed_width.url
-            const width = obj.images.fixed_width.width
-            const height = obj.images.fixed_width.height
-            const title =obj.title
-            
-            resultsHTML  += `<img 
+        return res.json(); // how do I want to handle response= Return the Promise 
+      }).then(function (json) {
+        console.log(json.data[0].images.fixed_width.url)
+        
+        let resultsHTML = ''
+        json.data.forEach(function (obj) {
+          console.log(obj.images.fixed_width.url)
+          const url = obj.images.fixed_width.url
+          const width = obj.images.fixed_width.width
+          const height = obj.images.fixed_width.height
+          const title = obj.title
+
+          resultsHTML += `<img 
               src="${url}" 
               width="${width}" 
               height="${height}"
               alt="${title}"
               >`
-            })
-            resultEl.innerHTML = resultsHTML// Data is actual 
-        }).catch(function(err) { //Catch Block
-            console.log(err.message)
         })
-        
-            
-    </script>
-    <script src="js/script.js"></script>
+        resultEl.innerHTML = resultsHTML // Data is actual 
+      }).catch(function (err) { //Catch Block
+        console.log(err.message)
+      })
+
+
+
+
+    }
+  </script>
+  <script src="js/script.js"></script>
   </body>
+
 </html>
