@@ -5,38 +5,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Giphy API Searcher</title>
+
+
   <style>
-      .container {
-          width: calc(200px * 4 + 3em);
-          margin: auto;
-      }
+  /*   .container {
+       width: calc(200px * 4 + 3em);
+       margin: auto;
+    }
 
-      .results {
-          columns: 4;
-          column-gap: 1em;
-      }
+    .results {
+      columns: 4;
+      column-gap: 1em;
+    }
 
-      .item{
-          margin-bottom: 1em;
-      }
+    .item {
+      margin-bottom: 1em;
+      display: inline-block;
+    } */
+
+    .results { 
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: -2px; /* Adjustment for the gutter */
+  width: 100%;
+}
+
+.item {
+  flex: auto;
+  height: 250px;
+  min-width: 150px;
+  margin: 0 8px 8px 0; /* Some gutter */
+} 
+
+
+
 
   </style>
+
+
+
+
   <link rel="stylesheet" type="text/css" href="styles/style.css" </head> <body>
   <h1>Heading</h1>
+
   <div class="container">
     <header>
       <form id="search-form">
         <input id="search-input" type="text" placeholder="search" />
-        <button type="submit">Search</button> 
+        <button type="submit">Search</button>
       </form>
-    </header><br> 
+    </header><br>
 
     <div id="results" class="results">
-
-
-
     </div>
+
   </div>
+
+
   <script>
     const searchForm = document.getElementById('search-form')
     const searchInput = document.getElementById('search-input')
@@ -50,8 +75,9 @@
 
     function search(q) {
       const apikey = 'yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt'
+      const limit = 'int(24)'
       const path =
-        `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}`;
+        `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=20`;
 
       /*     const p = fetch(path) //Promise
     const p2 = p.then(function(res) {
@@ -65,7 +91,7 @@
         return res.json(); // how do I want to handle response= Return the Promise 
       }).then(function (json) {
         console.log(json.data[0].images.fixed_width.url)
-        
+
         let resultsHTML = ''
         json.data.forEach(function (obj) {
           console.log(obj.images.fixed_width.url)
