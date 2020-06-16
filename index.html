@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Giphy API Searcher</title>
-
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="styles/style.css" </head> 
   <body>
   <h1>Heading</h1>
@@ -15,13 +16,13 @@
     <header>
       <form id="search-form">
         <input id="search-input" type="text" placeholder="search" />
-        <button type="submit">Search</button> 
+        <i id="filtersubmit" class="fa fa-search" aria-hidden="true"></i>
       </form>
     </header>
   </div>
   
   
-  <div class="container">
+  <div class="container flex">
   <div id="results" class="results"></div>
   </div>
 

@@ -1,8 +1,8 @@
-const searchForm = document.getElementById('search-form')
+    const searchForm = document.getElementById('search-form')
     const searchInput = document.getElementById('search-input')
     const resultEl = document.getElementById('results')
 
-    searchForm.addEventListener('submit', function (e) {
+    $('#filtersubmit').click(function(e)  {
       e.preventDefault()
       const q = searchInput.value
       search(q)
@@ -35,3 +35,5 @@ const searchForm = document.getElementById('search-form')
       }).catch(function (err) { //Catch Block
         console.log(err.message)
       })}
+
+   
