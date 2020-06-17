@@ -33,7 +33,6 @@ div#results:hover img:hover { opacity: 1; }
 
   img{
     width: auto;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.4em;
     height: auto !important;
   }
-
