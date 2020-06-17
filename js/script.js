@@ -12,7 +12,7 @@
       const apikey = 'yaodqvqLaqyaORuc9A7bW6JHgruXo0Zt'
       // const limit = 'int(24)'
       const path =
-        `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=25`;
+        `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=30`;
 
     
 
@@ -25,8 +25,6 @@
         json.data.forEach(function (obj) {
           console.log(obj.images.fixed_width.url)
           const url = obj.images.fixed_width.url
-          const width = obj.images.fixed_width.width
-          const height = obj.images.fixed_width.height
           const title = obj.title
 
         resultsHTML += `<img class="item" src="${url}" alt="${title}">`
@@ -36,4 +34,4 @@
         console.log(err.message)
       })}
 
-   
+     
