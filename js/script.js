@@ -34,4 +34,4 @@
         console.log(err.message)
       })}
 
-     
+  // init Masonry

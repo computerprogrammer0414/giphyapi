@@ -31,12 +31,9 @@ div#results:hover img:hover { opacity: 1; }
     max-width: 820px;
   }
 
-
-
   img{
     width: auto;
     margin-bottom: 0.2em;
-   
+    height: auto !important;
   }
 
-  
