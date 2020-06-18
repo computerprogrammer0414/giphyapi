@@ -1,38 +1,60 @@
 body {
-  padding: 0;
-  margin: 0;
   background: rgb(18,17,25);
   
 }
-  div{
-    text-align: center;
-  }
-  #filtersubmit {
-    position: relative;
-    z-index: 1;
-    left: -25px;
-    top: 1px;
-    color: #7B7B7B;
-    cursor:pointer;
-    width: 0;
+
+.container {
+  width: calc(200px * 4 + .05em);
+  margin: auto;
 }
 
+
+.results {
+  columns: 4;
+  column-gap: 1em;
+}
+
+.item{
+  margin-bottom: .05em;
+}
+
+/* Media Query for iPad    */
+@media screen and (max-width: 768px) {
+  .container {
+    width: calc(200px * 3 + .05em);
+    margin: auto;
+  }
+    .results {
+      columns: 3;
+      column-gap: 1em;
+    }
+   }
+
+
+/* Media Query for Iphone 6/7/8 Plus. IphoneX    */
+@media screen and (max-width: 414px) {
+  .container {
+      width: calc(200px * 1.5 + .15em);
+      margin: auto;
+      }
+      .results {
+        columns: 1;
+        max-width: 100%;
+        
+      }
+          .item{
+            margin-bottom: .05em;
+            width:100%;
+    
+          }
+  }     
+
+
+
 div#results img {  
-    -webkit-transition: .5s opacity;
-          transition: .5s opacity;
+  -webkit-transition: .5s opacity;
+        transition: .5s opacity;
 }
 
 div#results:hover img { opacity: 0.3; }
 div#results:hover img:hover { opacity: 1; } 
-
-  .container{
-    padding: 0.3em;
-    column-count: 4;
-    max-width: 820px;
-  }
-
-  img{
-    width: auto;
-    margin-bottom: 0.4em;
-    height: auto !important;
-  }
